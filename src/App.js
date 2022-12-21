@@ -8,14 +8,14 @@ class App extends Component {
 
         return (
             <div className='text-center'>
-                <div className='alert alert-primary'>
+                <div className='alert bg-primary text-white'>
                     <h1>Todo App</h1>
                 </div>
-                <div className='card text-white bg-primary mb-3 mt-3 w-25 mx-auto'>
+                <div className='card text-white bg-light mb-3 mt-3 w-50 mx-auto'>
                     <div className='card-body text-center'>
                         <div className=' justify-content-center'>
                             <input
-                                className='form-control '
+                                className='form-control'
                                 type="text"
                                 placeholder='write your task here sexy :)'//task name 
                             //  onChange=//edit 
@@ -25,6 +25,15 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="input-group input-group-lg w-50 mx-auto">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Task">
+                    </input>
+                    <button class="btn btn-info fa fa-check-circle" type="button"></button>
+                    <button class="btn btn-danger fa fa-trash" type="button"></button>
                 </div>
             </div>
         );
