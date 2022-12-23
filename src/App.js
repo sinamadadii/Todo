@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
+import Tasks from './components/Tasks';
 
 class App extends Component {
     state = {
-
+        allTasks: [
+            { id: 1, title: 'Work from home' },
+            { id: 2, title: 'Go to gym' },
+            { id: 3, title: 'Learning English' }
+        ],
+        // showTasks: false,
     }
+    deleteTask = id => {
+        const tasksCopy = [...this.state.allTasks];
+        const filteredTasks = tasksCopy.filter(p => p.id !== id);
+        this.setState({ tasksCopy: filteredTasks });
+    }
+
     render() {
+        const { showTasks, allTasks } = this.state;
+
+        // if (showTasks) {
+        //     taskFunction = (
+
+        //     )
+        // }
+
 
         return (
             <div className='text-center'>
@@ -17,24 +37,19 @@ class App extends Component {
                             <input
                                 className='form-control'
                                 type="text"
-                                placeholder='write your task here sexy :)'//task name 
+                                placeholder='Enter your task sexy  ;)'//task name 
                             //  onChange=//edit 
                             />
                             <div className='input-group-prepend justify-content-center text-center'>
-                                <button className='btn btn-success mt-3'>Add it </button>
+                                <button className='btn btn-primary mt-3'>Add</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-group input-group-lg w-50 mx-auto">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Task">
-                    </input>
-                    <button class="btn btn-info fa fa-check-circle" type="button"></button>
-                    <button class="btn btn-danger fa fa-trash" type="button"></button>
-                </div>
+                <Tasks
+                    allTasks={allTasks}
+                    deleteTask={this.deleteTask}
+                />
             </div>
         );
     }
