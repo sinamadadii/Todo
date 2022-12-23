@@ -1,15 +1,8 @@
 import React from 'react';
 
 
-const taskFunction = ({ title, deleteTask }) => {
-    //line-through
-    // const handleClick = event => {
-    //     if (event.target.style.textDecoration) {
-    //         event.target.style.removeProperty('text-decoration');
-    //     } else {
-    //         event.target.style.setProperty('text-decoration', 'line-through');
-    //     }
-    // };
+const taskFunction = ({ title, deleteTask, editTask }) => {
+
     return (
         <div>
             {/* <button onClick={handleClick}>line-through</button> */}
@@ -19,6 +12,8 @@ const taskFunction = ({ title, deleteTask }) => {
                     type="text"
                     class="form-control strikethrough"
                     value={`${title}`}
+                    placeholder={title}
+                    onChange={editTask}
                 >
                 </input>
                 <button class="btn btn-info fa fa-check-circle" type="button" ></button>
@@ -27,6 +22,14 @@ const taskFunction = ({ title, deleteTask }) => {
 
         </div>
     );
+    //line-through
+    // const handleClick = event => {
+    //     if (event.target.style.textDecoration) {
+    //         event.target.style.removeProperty('text-decoration');
+    //     } else {
+    //         event.target.style.setProperty('text-decoration', 'line-through');
+    //     }
+    // };
 }
 
 export default taskFunction;

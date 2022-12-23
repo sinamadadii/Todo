@@ -16,13 +16,20 @@ class App extends Component {
         const filteredTasks = allTasks.filter(p => p.id !== id);
         this.setState({ allTasks: filteredTasks });
     }
-    handleClick = event => {
-        if (event.target.style.textDecoration) {
-            event.target.style.removeProperty('text-decoration');
-        } else {
-            event.target.style.setProperty('text-decoration', 'line-through');
-        }
-    };
+    editTask = (event, id) => {
+        //pull it out from this.state
+        const { allTasks: taskList } = this.state;
+
+        const taskIndex = taskList.findIndex(p => p.id === id);
+        const task = taskList[taskIndex];
+        task.title = event.target.value;
+
+        const copyTasks = [...this.state.allTasks];
+
+        copyTasks[taskIndex] = task;
+        this.setState({ allTasks: copyTasks })
+
+    }
 
     render() {
         const { allTasks } = this.state;
@@ -57,6 +64,7 @@ class App extends Component {
                 <Tasks
                     allTasks={allTasks}
                     deleteTask={this.deleteTask}
+                    editTask={this.editTask}
                 />
             </div>
         );

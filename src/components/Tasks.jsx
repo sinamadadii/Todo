@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskFunction from './Task';
 
-const Tasks = ({ allTasks, deleteTask }) => {
+const Tasks = ({ allTasks, deleteTask, editTask }) => {
     return (
         <div>
             {allTasks.map(index => (
@@ -9,7 +9,7 @@ const Tasks = ({ allTasks, deleteTask }) => {
                     key={index.id}
                     title={index.title}
                     deleteTask={() => deleteTask(index.id)}
-
+                    editTask={(event) => editTask(event, index.id)}
                 />
             ))}
         </div>
