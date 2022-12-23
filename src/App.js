@@ -3,11 +3,8 @@ import Tasks from './components/Tasks';
 
 class App extends Component {
     state = {
-        allTasks: [
-            { id: 1, title: 'Work from home' },
-            { id: 2, title: 'Go to gym' },
-            { id: 3, title: 'Learning English' }
-        ],
+        allTasks: [],
+        Task: "",
         // showTasks: false,
     }
     deleteTask = id => {
@@ -30,7 +27,18 @@ class App extends Component {
         this.setState({ allTasks: copyTasks })
 
     }
-
+    newTask = () => {
+        const allTasks = [...this.state.allTasks];
+        const task = {
+            id: Math.floor(Math.random() * 100),
+            title: this.state.Task
+        }
+        allTasks.push(task);
+        this.setState({ allTasks, Task: "" })
+    }
+    setTask = event => {
+        this.setState({ Task: event.target.value })
+    }
     render() {
         const { allTasks } = this.state;
 
@@ -52,11 +60,15 @@ class App extends Component {
                             <input
                                 className='form-control'
                                 type="text"
+                                value={this.state.Task}
+                                onChange={this.setTask}
                                 placeholder='Enter your task sexy  ;)'//task name 
                             //  onChange=//edit 
                             />
                             <div className='input-group-prepend justify-content-center text-center'>
-                                <button className='btn btn-primary mt-3'  >Add</button>
+                                <button
+                                    className='btn btn-primary mt-3'
+                                    onClick={this.newTask}  >Add</button>
                             </div>
                         </div>
                     </div>
