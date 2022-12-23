@@ -16,6 +16,13 @@ class App extends Component {
         const filteredTasks = allTasks.filter(p => p.id !== id);
         this.setState({ allTasks: filteredTasks });
     }
+    handleClick = event => {
+        if (event.target.style.textDecoration) {
+            event.target.style.removeProperty('text-decoration');
+        } else {
+            event.target.style.setProperty('text-decoration', 'line-through');
+        }
+    };
 
     render() {
         const { allTasks } = this.state;
@@ -42,7 +49,7 @@ class App extends Component {
                             //  onChange=//edit 
                             />
                             <div className='input-group-prepend justify-content-center text-center'>
-                                <button className='btn btn-primary mt-3'>Add</button>
+                                <button className='btn btn-primary mt-3'  >Add</button>
                             </div>
                         </div>
                     </div>
