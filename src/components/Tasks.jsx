@@ -4,11 +4,11 @@ import TaskFunction from './Task';
 const Tasks = ({ allTasks, deleteTask }) => {
     return (
         <div>
-            {allTasks.map(pox => (
+            {allTasks.map(index => (
                 <TaskFunction
-                    key={pox.id}
-                    title={pox.title}
-                    deleteTask={() => deleteTask(pox.id)}
+                    key={index.id}
+                    title={index.title}
+                    deleteTask={() => deleteTask(index.id)}
 
                 />
             ))}

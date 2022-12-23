@@ -11,13 +11,14 @@ class App extends Component {
         // showTasks: false,
     }
     deleteTask = id => {
-        const tasksCopy = [...this.state.allTasks];
-        const filteredTasks = tasksCopy.filter(p => p.id !== id);
-        this.setState({ tasksCopy: filteredTasks });
+        //the copied array should have the same name as the main on
+        const allTasks = [...this.state.allTasks];
+        const filteredTasks = allTasks.filter(p => p.id !== id);
+        this.setState({ allTasks: filteredTasks });
     }
 
     render() {
-        const { showTasks, allTasks } = this.state;
+        const { allTasks } = this.state;
 
         // if (showTasks) {
         //     taskFunction = (
