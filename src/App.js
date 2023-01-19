@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import Tasks from './components/Tasks';
 
 class App extends Component {
+    constructor() {
+        super();
+        this.focusInput = React.createRef();
+        this.focusButton = React.createRef();
+    }
+
     state = {
         allTasks: [],
         Task: "",
         // showTasks: false,
     }
+
+    componentDidMount() {
+        this.focusInput.current.focus();
+    }
+
     deleteTask = id => {
         //the copied array should have the same name as the main on
         const allTasks = [...this.state.allTasks];
@@ -58,6 +69,7 @@ class App extends Component {
                     <div className='card-body text-center'>
                         <div className=' justify-content-center'>
                             <input
+                                ref={this.focusInput}
                                 className='form-control'
                                 type="text"
                                 value={this.state.Task}
